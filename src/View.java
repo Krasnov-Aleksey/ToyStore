@@ -4,6 +4,8 @@ public class View {
     Presenter presenter = new Presenter();
     Scanner scanner = new Scanner(System.in);
     SaveFile sF = new SaveFile();
+    IsNumeric isNumeric = new IsNumeric();
+    // TODO text to class
     public void mainMenu(){
         boolean flag = true;
         while (flag){
@@ -17,16 +19,21 @@ public class View {
                 case ("1"):
                     System.out.println("Введите название игрушки");
                     String nameToy = scanner.nextLine();
-                    // TODO проверка на число
-                    System.out.println("Введите вес игрушки от 0 до 100");
-                    String lossRateStr = scanner.nextLine();
-                    Double lossRate = Double.parseDouble(lossRateStr);
-                    while (lossRate<0 || lossRate>100){
-                        System.out.println("Вы ввели неправильный вес игрушки");
+                    Double lossRate = null;
+                    boolean flag1 = true;
+                    while (flag1){
                         System.out.println("Введите вес игрушки от 0 до 100");
-                        lossRateStr = scanner.nextLine();
-                        lossRate = Double.parseDouble(lossRateStr);
+                        String lossRateStr = scanner.nextLine();
+                        if(isNumeric.isNumeric(lossRateStr)){
+                            lossRate = Double.parseDouble(lossRateStr);
+                            if(lossRate>=0 && lossRate<=100){
+                                flag1=false;
+                            }
+                        }else {
+                            System.out.println("Вы ввели неправильный вес игрушки");
+                        }
                     }
+
                     presenter.addToyPr(nameToy,lossRate);
                     break;
                 case ("2"):
@@ -55,7 +62,6 @@ public class View {
                     } else {
                         System.out.println("Выход из программы");
                     }
-
             }
         }
     }

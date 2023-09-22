@@ -13,28 +13,14 @@ public class Toy  implements Comparable<Toy> {
         this.nameToy = nameToy;
         this.lossRate = lossRate;
     }
-    public void setIdToy(int idToy){
-        this.idToy=idToy;
-    }
-
-
 
     @Override
     public int compareTo(Toy o) {
         return o.lossRate>this.lossRate ? 1: -1;
     }
 
-    @Override
-//    public String toString() {
-//        return "Toy{" +
-//                "idToy=" + idToy +
-//                ", nameToy='" + nameToy + '\'' +
-//                ", lossRate=" + lossRate +
-//                '}';
-//    }
     public String toString() {
         return "Название игрушки ='" + nameToy+'\'';
-
     }
 }
 
