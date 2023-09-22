@@ -5,24 +5,24 @@ public class View {
     Scanner scanner = new Scanner(System.in);
     SaveFile sF = new SaveFile();
     IsNumeric isNumeric = new IsNumeric();
-    // TODO text to class
+    TextView textView = new TextView();
     public void mainMenu(){
         boolean flag = true;
         while (flag){
-            System.out.println("Введите пункт меню");
-            System.out.println("1. Добавить игрушку");
-            System.out.println("2. Вывести список разыгрываемых игрушек");
-            System.out.println("3. Разыграть игрушку");
-            System.out.println("4. Выход из программы");
+            System.out.println(textView.enterMenuItem);
+            System.out.println(textView.menu1);
+            System.out.println(textView.menu2);
+            System.out.println(textView.menu3);
+            System.out.println(textView.menu4);
             String choice = scanner.nextLine();
             switch (choice){
                 case ("1"):
-                    System.out.println("Введите название игрушки");
+                    System.out.println(textView.enterNameToy);
                     String nameToy = scanner.nextLine();
                     Double lossRate = null;
                     boolean flag1 = true;
                     while (flag1){
-                        System.out.println("Введите вес игрушки от 0 до 100");
+                        System.out.println(textView.enterLossRate);
                         String lossRateStr = scanner.nextLine();
                         if(isNumeric.isNumeric(lossRateStr)){
                             lossRate = Double.parseDouble(lossRateStr);
@@ -30,7 +30,7 @@ public class View {
                                 flag1=false;
                             }
                         }else {
-                            System.out.println("Вы ввели неправильный вес игрушки");
+                            System.out.println(textView.errorLossRate);
                         }
                     }
 
@@ -39,7 +39,7 @@ public class View {
                 case ("2"):
                     String textToy = presenter.textTopPr().toString();
                     if (textToy.isEmpty()){
-                        System.out.println("Игрушек нет");
+                        System.out.println(textView.noToys);
                     }else {
                         System.out.println(textToy);
                     }
@@ -47,20 +47,20 @@ public class View {
                 case ("3"):
                     try {
                         String raffleToy = presenter.raffleToysPr().toString();
-                        System.out.println("Вы выиграли (" + raffleToy + ")");
-                        sF.saveFile(raffleToy + "\n");
+                        System.out.println(textView.youWon + " ( " + raffleToy + " )");
+                        sF.saveFile(textView.path,raffleToy + "\n");
                     } catch (NullPointerException e) {
-                        System.out.println("Разыгрывать нечего");
+                        System.out.println(textView.nothingPlay);
                 }
                     break;
                 case ("4"):
                     flag=false;
                 default:
                     if (flag){
-                        System.out.println("Выбрали не правильный пункт меню");
-                        System.out.println("Выберите правильный пункт меню");
+                        System.out.println(textView.errorMenuItem);
+                        System.out.println(textView.selectCorrectMenu);
                     } else {
-                        System.out.println("Выход из программы");
+                        System.out.println(textView.exitProgram);
                     }
             }
         }
