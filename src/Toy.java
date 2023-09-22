@@ -25,12 +25,16 @@ public class Toy  implements Comparable<Toy> {
     }
 
     @Override
+//    public String toString() {
+//        return "Toy{" +
+//                "idToy=" + idToy +
+//                ", nameToy='" + nameToy + '\'' +
+//                ", lossRate=" + lossRate +
+//                '}';
+//    }
     public String toString() {
-        return "Toy{" +
-                "idToy=" + idToy +
-                ", nameToy='" + nameToy + '\'' +
-                ", lossRate=" + lossRate +
-                '}';
+        return "Название игрушки ='" + nameToy+'\'';
+
     }
 }
 

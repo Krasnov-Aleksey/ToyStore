@@ -5,11 +5,10 @@ public class Presenter {
         toyStore.addToy(nameToy,lossRate);
     }
 
-    // TODO delete
-    public void printToyPr(){
-        toyStore.printToy();
-    }
     public StringBuilder textTopPr(){
         return toyStore.textToy();
+    }
+    public Toy raffleToysPr(){
+        return toyStore.raffleToys();
     }
 }
